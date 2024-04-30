@@ -5,7 +5,7 @@ Ice Dodo has a clear structure in terms of model structure
 input: the graphics in front of the player
 
 - This is made easier by the fact that most levels are high contrast. This can be converted into 3-class input matrices (track, obstacle, void) and that should simplify the process enough for reinforcement learning to happen ok
-  - Need to find levels that are distinct color palette
+  - Need to find levels that are distinct color palette                          
   - Use Low res version of ice dodo
   - How to map onto bitmap.
   - Variable FOV might be an issue
@@ -44,3 +44,4 @@ Therefore if we are to pursue this, the following questions need to be answered:
   - Can Ice dodo be slowed down?
   - Each model may take minutes before reward is decided(!!)
     - Therefore going thru a generation of models will take hours, days 😬
+    - Don edited this
