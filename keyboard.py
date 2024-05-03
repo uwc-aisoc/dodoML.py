@@ -23,7 +23,8 @@ def keyboardMasher(inp, delay):
     keyboard = Controller()
     if (inp != "none"):
         keyboard.press(input_mappings[inp])
-        time.sleep(delay)
+    
+    time.sleep(delay)
 
 
 
