@@ -45,4 +45,5 @@ Therefore if we are to pursue this, the following questions need to be answered:
   - Each model may take minutes before reward is decided(!!)
     - Therefore going thru a generation of models will take hours, days 😬
     - Don edited this
+    - Adi edited this :)
     - Rupert edited this
