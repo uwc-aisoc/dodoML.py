@@ -19,7 +19,7 @@ for width in range(0, 63):
         gridx = img[bottomH:topH, bottomW:topW]
         cv2.imshow('grid'+str(height)+str(width), gridx)
         cv2.waitKey(0)
-        cv2
+       
 
 #method 1: images can be combined using both cv2.hconcat() and cv2.vconcat() in tile form using a 2D list.
 #you might need to fix the indentation a little bit
