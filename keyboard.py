@@ -1,38 +1,36 @@
-import random
-import time
+from enum import Enum
+from typing import List
 
 from pynput.keyboard import Key, Controller
 
 
-input_mappings = {
-    "right": Key.right,
-    "left": Key.left
-
-}
-
-def dummy_model():
-    seed = random.random()
-    if (int(seed * 10) % 3 == 0):
-        return "right"
-    elif (int(seed * 10) % 3 == 1):
-        return "left"
-    else:
-        return "none"
-    
-def keyboardMasher(inp, delay):
-    keyboard = Controller()
-    if (inp != "none"):
-        keyboard.press(input_mappings[inp])
-    
-    time.sleep(delay)
+# Using Enum instead of String (which is used in earlier versions)
+class KeyDecision(Enum):
+    NONE = 0
+    RESET = 1
+    LEFT = 2
+    RIGHT = 3
 
 
+_key_map: List[Key] = [0, 0, Key.left, Key.right]
 
-CONST_DELAY = 0.1
+# TODO Keys
+# INFO: Pynput does not feature a hold for x seconds
+# feature but only press and release.
+# Solution 1 (written below): Press down and before the next calculation cycle, reset.
+# Solution 2: Multithreading.
+# Solution 3: Ticking. Make a update function that gets called in a loop
+# with a deltaTime argument to automatically release pressed keys.
 
-while True:
-    # Model shenanigans here
-    final_key = dummy_model()
+_ctrl = Controller()
 
-    keyboardMasher(final_key, CONST_DELAY)
-    # End of one cycle
+
+def keyboard_masher(inp: KeyDecision):
+    if inp == KeyDecision.NONE:
+        return
+    elif inp == KeyDecision.RESET:
+        _ctrl.release(Key.left)
+        _ctrl.release(Key.right)
+        return
+
+    _ctrl.press(_key_map[inp.value])
