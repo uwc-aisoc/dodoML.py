@@ -1,1 +1,3 @@
 pynput.keyboard
+opencv-python
+mss
